@@ -1,0 +1,7 @@
+{
+  "name": "Vane Fores Micropigmentación",
+  "description": "One-page exclusiva y de alta precisión para el estudio de micropigmentación avanzada y visagismo de Vane Fores.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
