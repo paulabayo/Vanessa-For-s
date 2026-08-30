@@ -1,14 +1,13 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, Award, Heart, CheckCircle2, Sliders, MessageCircle, Star } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Award, Heart, CheckCircle2, MessageCircle, Star } from 'lucide-react';
 import { StudioConfig, ServiceItem } from '../types';
 
 interface HeroSectionProps {
   config: StudioConfig;
   services: ServiceItem[];
-  onOpenCustomizer: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ config, services, onOpenCustomizer }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ config, services }) => {
   return (
     <section id="inicio" className="relative pt-6 pb-16 md:py-16 overflow-hidden">
       {/* Background ambient lighting effects */}
@@ -137,18 +136,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, services, onOp
                     <span className="w-2 h-2 rounded-full bg-[#c5a059] animate-pulse"></span>
                     <span>Resultado Hiperrealista</span>
                   </div>
-                </div>
-
-                {/* Top Right: Customizer Trigger */}
-                <div className="absolute top-3 right-3 z-10">
-                  <button
-                    onClick={onOpenCustomizer}
-                    className="bg-black/80 hover:bg-black text-white border border-white/20 text-[10px] py-1.5 px-3 rounded-full flex items-center gap-1.5 backdrop-blur-md transition-transform hover:scale-105 cursor-pointer shadow-lg"
-                    title="Cambiar foto de la modelo o logotipo"
-                  >
-                    <Sliders className="w-3 h-3 text-[#c5a059]" />
-                    <span>Cambiar Foto / Logo</span>
-                  </button>
                 </div>
 
                 {/* Floating Highlight 1: Brows & Golden Ratio */}

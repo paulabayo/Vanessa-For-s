@@ -24,12 +24,10 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { BookingCalculatorSection } from './components/BookingCalculatorSection';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
-import { MediaManagerModal } from './components/MediaManagerModal';
-import { Sliders } from 'lucide-react';
 
 export default function App() {
   // Config state with local storage persistence
-  const [studioConfig, setStudioConfig] = useState<StudioConfig>(() => {
+  const [studioConfig] = useState<StudioConfig>(() => {
     const saved = localStorage.getItem('vanefores_studio_config') || localStorage.getItem('laurea_studio_config');
     if (saved) {
       try {
@@ -63,7 +61,6 @@ export default function App() {
   const [testimonials] = useState(initialTestimonials);
   const [faqs] = useState(initialFAQs);
 
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [preselectedBookingService, setPreselectedBookingService] = useState<ServiceItem | null>(null);
 
   // Sync to local storage
@@ -96,7 +93,6 @@ export default function App() {
       {/* Navigation Header */}
       <Navbar
         config={studioConfig}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
         onOpenDocManager={() => {
           const element = document.getElementById('documentos');
           if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -109,7 +105,6 @@ export default function App() {
         <HeroSection
           config={studioConfig}
           services={services}
-          onOpenCustomizer={() => setIsCustomizerOpen(true)}
         />
 
         {/* 2. Organized Clinical Documents & Client Protocols */}
@@ -160,28 +155,7 @@ export default function App() {
       {/* Footer */}
       <Footer
         config={studioConfig}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
       />
-
-      {/* Media & Brand Customizer Drawer */}
-      <MediaManagerModal
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        config={studioConfig}
-        onUpdateConfig={(newConfig) => setStudioConfig(newConfig)}
-      />
-
-      {/* Quick Floating Customizer Action for User Convenience */}
-      <div className="fixed bottom-6 right-6 z-30 flex flex-col gap-2.5">
-        <button
-          onClick={() => setIsCustomizerOpen(true)}
-          className="px-4 py-2.5 rounded-full bg-[#181818]/90 hover:bg-[#222] border border-[#c5a059]/50 text-[#e5c378] hover:text-white text-xs font-semibold uppercase tracking-wider backdrop-blur-md shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer"
-          title="Cambiar foto de la chica, logo o datos del estudio"
-        >
-          <Sliders className="w-3.5 h-3.5 text-[#c5a059]" />
-          <span className="hidden sm:inline">Personalizar Fotos / Logo</span>
-        </button>
-      </div>
     </div>
   );
 }

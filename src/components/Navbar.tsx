@@ -1,14 +1,13 @@
 import React from 'react';
-import { Sparkles, Calendar, MessageCircle, Sliders, Menu, X } from 'lucide-react';
+import { Calendar, MessageCircle, Menu, X } from 'lucide-react';
 import { StudioConfig } from '../types';
 
 interface NavbarProps {
   config: StudioConfig;
-  onOpenCustomizer: () => void;
   onOpenDocManager: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ config, onOpenCustomizer, onOpenDocManager }) => {
+export const Navbar: React.FC<NavbarProps> = ({ config, onOpenDocManager }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
@@ -55,15 +54,15 @@ export const Navbar: React.FC<NavbarProps> = ({ config, onOpenCustomizer, onOpen
 
         {/* Right CTA Actions */}
         <div className="hidden sm:flex items-center gap-3">
-          {/* Quick Customizer trigger for user uploaded media */}
-          <button
-            onClick={onOpenCustomizer}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-all cursor-pointer"
-            title="Personalizar fotos, logotipo o datos del estudio"
+          <a
+            href={`https://wa.me/${config.whatsapp}?text=Hola%20${encodeURIComponent(config.specialistName)},%20quisiera%20pedir%20cita.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-4 py-2.5 text-xs text-[#25D366] hover:text-white bg-[#1a1a1a] hover:bg-[#25D366]/20 rounded-full border border-[#25D366]/30 transition-all cursor-pointer"
           >
-            <Sliders className="w-3.5 h-3.5 text-[#c5a059]" />
-            <span className="hidden md:inline">Editar Fotos / Logo</span>
-          </button>
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span>WhatsApp</span>
+          </a>
 
           <a
             href="#reservar"
@@ -76,13 +75,6 @@ export const Navbar: React.FC<NavbarProps> = ({ config, onOpenCustomizer, onOpen
 
         {/* Mobile Menu Button */}
         <div className="flex sm:hidden items-center gap-2">
-          <button
-            onClick={onOpenCustomizer}
-            className="p-2 text-neutral-300 bg-white/5 rounded-full border border-white/10"
-            title="Personalizar fotos"
-          >
-            <Sliders className="w-4 h-4 text-[#c5a059]" />
-          </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-neutral-300 hover:text-white bg-white/5 rounded-lg border border-white/10"

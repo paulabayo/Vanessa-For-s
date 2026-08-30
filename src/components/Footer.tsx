@@ -1,13 +1,12 @@
 import React from 'react';
 import { StudioConfig } from '../types';
-import { Instagram, MessageCircle, MapPin, Clock, Phone, Mail, ShieldCheck, Sliders } from 'lucide-react';
+import { Instagram, MessageCircle, MapPin, Clock, Phone, Mail, ShieldCheck } from 'lucide-react';
 
 interface FooterProps {
   config: StudioConfig;
-  onOpenCustomizer: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ config, onOpenCustomizer }) => {
+export const Footer: React.FC<FooterProps> = ({ config }) => {
   return (
     <footer className="bg-[#070707] text-[#a0a0a0] border-t border-white/10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,14 +52,6 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenCustomizer }) => {
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
-              <button
-                onClick={onOpenCustomizer}
-                className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-[11px] text-neutral-400 hover:text-white border border-white/10 flex items-center gap-1.5 transition-colors"
-                title="Personalizar fotos o datos del estudio"
-              >
-                <Sliders className="w-3.5 h-3.5 text-[#c5a059]" />
-                <span>Editar Estudio</span>
-              </button>
             </div>
           </div>
 
