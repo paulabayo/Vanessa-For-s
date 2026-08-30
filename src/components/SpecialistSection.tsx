@@ -1,6 +1,8 @@
 import React from 'react';
 import { Award, ShieldCheck, Heart, Sparkles, CheckCircle2, MessageCircle } from 'lucide-react';
 import { StudioConfig } from '../types';
+import heroFallback from '../assets/images/vanessa_hero_burriana_1788101724851.jpg';
+import logoFallback from '../assets/images/vanessa_fores_logotipo_1788101706636.jpg';
 
 interface SpecialistSectionProps {
   config: StudioConfig;
@@ -20,18 +22,34 @@ export const SpecialistSection: React.FC<SpecialistSectionProps> = ({ config }) 
                 <img
                   src={config.heroImage}
                   alt={config.specialistName}
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (target.src !== heroFallback) {
+                      target.src = heroFallback;
+                    }
+                  }}
                   className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
                 
                 {/* Floating Seal Badge */}
-                <div className="absolute bottom-4 left-4 right-4 bg-black/85 backdrop-blur-md p-3.5 rounded-xl border border-white/10 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#c5a059] text-black flex items-center justify-center font-bold text-base shrink-0">
-                    VF
+                <div className="absolute bottom-4 left-4 right-4 bg-black/90 backdrop-blur-md p-3.5 rounded-xl border border-white/15 flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full bg-white border border-[#c5a059] p-0.5 overflow-hidden shrink-0">
+                    <img
+                      src={config.logoImage}
+                      alt="Logo V. Forés"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (target.src !== logoFallback) {
+                          target.src = logoFallback;
+                        }
+                      }}
+                      className="w-full h-full object-contain rounded-full"
+                    />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-white uppercase tracking-wider">{config.specialistName}</p>
-                    <p className="text-[10px] text-[#e5c378]">Master Artist & Visagista</p>
+                    <p className="text-[10px] text-[#e5c378]">Premio PMU World • Master Artist</p>
                   </div>
                 </div>
               </div>
@@ -90,10 +108,10 @@ export const SpecialistSection: React.FC<SpecialistSectionProps> = ({ config }) 
                 href="#reservar"
                 className="px-6 py-3.5 rounded-full bg-[#c5a059] hover:bg-[#d4af37] text-black font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer"
               >
-                Reservar Consulta con Vane
+                Reservar Consulta con Vanessa
               </a>
               <a
-                href={`https://wa.me/${config.whatsapp}?text=Hola%20Vane,%20quisiera%20consultar%20una%20duda%20sobre%20micropigmentación.`}
+                href={`https://wa.me/${config.whatsapp}?text=Hola%20Vanessa,%20quisiera%20consultar%20una%20duda%20sobre%20micropigmentación.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3.5 rounded-full bg-white/5 hover:bg-white/10 text-white font-medium text-xs sm:text-sm uppercase tracking-wider border border-white/15 transition-colors flex items-center gap-2"

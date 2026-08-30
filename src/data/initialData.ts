@@ -1,7 +1,7 @@
 import { ServiceItem, DocumentSection, BeforeAfterItem, Testimonial, FAQItem, StudioConfig } from '../types';
 
-import heroWomanImg from '../assets/images/micropigmentation_hero_1788095504187.jpg';
-import studioLogoImg from '../assets/images/luxury_studio_logo_1788095517115.jpg';
+import heroVanessaImg from '../assets/images/vanessa_hero_burriana_1788101724851.jpg';
+import studioLogoImg from '../assets/images/vanessa_fores_logotipo_1788101706636.jpg';
 import browsAfterImg from '../assets/images/brows_microblading_1788095532419.jpg';
 import browsBeforeImg from '../assets/images/brows_natural_before_1788095624426.jpg';
 import lipsAfterImg from '../assets/images/lips_aquarelle_1788095568733.jpg';
@@ -9,21 +9,21 @@ import lipsBeforeImg from '../assets/images/lips_natural_before_1788095637039.jp
 import eyelinerImg from '../assets/images/eyeliner_close_up_1788095586961.jpg';
 
 export const initialStudioConfig: StudioConfig = {
-  studioName: "Vane Fores",
-  tagline: "Micropigmentación Avanzada & Visagismo de Autor",
-  heroHeadline: "Redefine tu belleza natural.",
-  heroSubheadline: "Técnicas hiperrealistas de micropigmentación que realzan tu mirada y armonizan tus rasgos con elegancia duradera.",
-  heroImage: heroWomanImg,
-  logoImage: studioLogoImg,
-  phone: "+34 612 345 678",
-  whatsapp: "34612345678",
-  instagram: "@vanefores.micropigmentacion",
-  email: "contacto@vanefores.es",
-  location: "Paseo de la Castellana 140, 2ª Planta, Madrid",
+  studioName: "Vanessa Forés",
+  tagline: "Micropigmentación Facial & Visagismo de Autor",
+  heroHeadline: "Micropigmentación Facial de Autor.",
+  heroSubheadline: "Técnicas hiperrealistas de micropigmentación que realzan tu mirada y armonizan tus rasgos con elegancia duradera. Nueva consulta en Burriana.",
+  heroImage: "/DIRECCION.jpeg",
+  logoImage: "/LOGOTIPO.jpeg",
+  phone: "+34 605 470 721",
+  whatsapp: "34605470721",
+  instagram: "@vanessafores.micropigmentacion",
+  email: "contacto@vanessafores.es",
+  location: "Calle Benicarló 8, Burriana (Castellón)",
   schedule: "Lunes a Viernes: 10:00 - 20:00 | Sábados: 10:00 - 15:00",
-  specialistName: "Vane Fores",
-  specialistTitle: "Master Artist en Micropigmentación & Estética Facial Avanzada",
-  specialistBio: "Especialista certificada internacionalmente en visagismo y micropigmentación estética y paramédica. Con más de 8 años de experiencia y más de 1.500 tratamientos realizados, mi filosofía se basa en ensalzar la armonía natural sin alterar la expresión."
+  specialistName: "Vanessa Forés",
+  specialistTitle: "Premio PMU World • Master Artist en Micropigmentación & Visagismo Facial",
+  specialistBio: "Especialista galardonada con el Premio PMU World y certificada con honores por Mario Gisbert Academy y la Asociación Española de Micropigmentación (AEM). Con más de 8 años de trayectoria y más de 1.500 tratamientos de autor, mi filosofía une la precisión médica y el visagismo áureo para sublimar tu belleza con total naturalidad."
 };
 
 export const initialServices: ServiceItem[] = [
@@ -122,7 +122,7 @@ export const initialServices: ServiceItem[] = [
       'Asesoramiento con informe médico previo'
     ],
     recommendedFor: 'Pacientes recuperadas de procesos oncológicos o con cicatrices periareolares.',
-    image: heroWomanImg,
+    image: heroVanessaImg,
     badge: 'Médico-Estético'
   }
 ];
@@ -311,7 +311,7 @@ export const initialTestimonials: Testimonial[] = [
     name: 'Carmen Morales',
     service: 'Cejas Shading & Aquarelle Lips',
     rating: 5,
-    comment: 'Llegué con mucho miedo a que quedara artificial y el resultado superó todas mis expectativas. Vane tiene unas manos de ángel, no me dolió nada y mis cejas parecen recién peinadas cada mañana.',
+    comment: 'Llegué con mucho miedo a que quedara artificial y el resultado superó todas mis expectativas. Vanessa tiene unas manos de ángel, no me dolió nada y mis cejas parecen recién peinadas cada mañana.',
     date: 'Hace 2 semanas'
   },
   {

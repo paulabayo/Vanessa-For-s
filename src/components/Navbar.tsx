@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, MessageCircle, Menu, X } from 'lucide-react';
 import { StudioConfig } from '../types';
+import logoFallback from '../assets/images/vanessa_fores_logotipo_1788101706636.jpg';
 
 interface NavbarProps {
   config: StudioConfig;
@@ -15,25 +16,25 @@ export const Navbar: React.FC<NavbarProps> = ({ config, onOpenDocManager }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo & Title */}
         <a href="#inicio" className="flex items-center gap-3.5 group">
-          <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#c5a059] p-0.5 bg-[#141414] transition-transform duration-300 group-hover:scale-105">
-            {config.logoImage ? (
-              <img
-                src={config.logoImage}
-                alt="Logo del Estudio"
-                className="w-full h-full object-cover rounded-full"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-[#c5a059] font-brand text-sm font-bold tracking-tighter">
-                VF
-              </div>
-            )}
+          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#c5a059] p-0.5 bg-white shadow-md transition-transform duration-300 group-hover:scale-105">
+            <img
+              src={config.logoImage}
+              alt="Logo Vanessa Forés"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                if (target.src !== logoFallback) {
+                  target.src = logoFallback;
+                }
+              }}
+              className="w-full h-full object-contain rounded-full"
+            />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-brand font-semibold tracking-[0.15em] text-[#e5c378] uppercase transition-colors group-hover:text-white">
-              {config.studioName}
+            <span className="text-lg sm:text-xl font-brand font-semibold tracking-[0.18em] text-[#e5c378] uppercase transition-colors group-hover:text-white">
+              VANESSA FORÉS
             </span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 font-medium">
-              {config.tagline.split('&')[0]}
+            <span className="text-[9px] uppercase tracking-[0.28em] text-neutral-400 font-medium">
+              MICROPIGMENTACIÓN ESTÉTICA
             </span>
           </div>
         </a>

@@ -26,26 +26,12 @@ import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 
 export default function App() {
-  // Config state with local storage persistence
-  const [studioConfig] = useState<StudioConfig>(() => {
-    const saved = localStorage.getItem('vanefores_studio_config') || localStorage.getItem('laurea_studio_config');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.studioName === "L'Aurea Studio" || parsed.specialistName === "Paula Bayo") {
-          return { ...initialStudioConfig, ...parsed, studioName: "Vane Fores", specialistName: "Vane Fores" };
-        }
-        return { ...initialStudioConfig, ...parsed };
-      } catch (e) {
-        return initialStudioConfig;
-      }
-    }
-    return initialStudioConfig;
-  });
+  // Config state directly from initialStudioConfig
+  const studioConfig = initialStudioConfig;
 
   // Documents state with local storage persistence
   const [documents, setDocuments] = useState<DocumentSection[]>(() => {
-    const saved = localStorage.getItem('vanefores_documents') || localStorage.getItem('laurea_documents');
+    const saved = localStorage.getItem('vanessafores_documents') || localStorage.getItem('vanefores_documents');
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -65,11 +51,7 @@ export default function App() {
 
   // Sync to local storage
   useEffect(() => {
-    localStorage.setItem('vanefores_studio_config', JSON.stringify(studioConfig));
-  }, [studioConfig]);
-
-  useEffect(() => {
-    localStorage.setItem('vanefores_documents', JSON.stringify(documents));
+    localStorage.setItem('vanessafores_documents', JSON.stringify(documents));
   }, [documents]);
 
   const handleAddDocument = (newDoc: DocumentSection) => {

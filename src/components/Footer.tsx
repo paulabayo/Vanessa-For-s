@@ -1,6 +1,7 @@
 import React from 'react';
 import { StudioConfig } from '../types';
 import { Instagram, MessageCircle, MapPin, Clock, Phone, Mail, ShieldCheck } from 'lucide-react';
+import logoFallback from '../assets/images/vanessa_fores_logotipo_1788101706636.jpg';
 
 interface FooterProps {
   config: StudioConfig;
@@ -17,16 +18,27 @@ export const Footer: React.FC<FooterProps> = ({ config }) => {
           {/* Col 1: Studio Brand */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-[#c5a059] p-0.5 bg-[#141414] flex items-center justify-center overflow-hidden">
-                {config.logoImage ? (
-                  <img src={config.logoImage} alt="Logo" className="w-full h-full object-cover rounded-full" />
-                ) : (
-                  <span className="text-[#c5a059] font-brand text-sm font-bold">VF</span>
-                )}
+              <div className="w-11 h-11 rounded-full border-2 border-[#c5a059] p-0.5 bg-white flex items-center justify-center overflow-hidden shadow-md">
+                <img
+                  src={config.logoImage}
+                  alt="Logo Vanessa Forés"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (target.src !== logoFallback) {
+                      target.src = logoFallback;
+                    }
+                  }}
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
-              <span className="text-xl font-brand font-bold tracking-widest text-[#e5c378] uppercase">
-                {config.studioName}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg font-brand font-bold tracking-widest text-[#e5c378] uppercase">
+                  {config.studioName}
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.25em] text-neutral-400 font-medium">
+                  MICROPIGMENTACIÓN ESTÉTICA
+                </span>
+              </div>
             </div>
             
             <p className="text-xs text-neutral-400 font-light leading-relaxed max-w-sm">

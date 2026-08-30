@@ -1,6 +1,8 @@
 import React from 'react';
 import { Sparkles, ArrowRight, ShieldCheck, Award, Heart, CheckCircle2, MessageCircle, Star } from 'lucide-react';
 import { StudioConfig, ServiceItem } from '../types';
+import heroFallback from '../assets/images/vanessa_hero_burriana_1788101724851.jpg';
+import logoFallback from '../assets/images/vanessa_fores_logotipo_1788101706636.jpg';
 
 interface HeroSectionProps {
   config: StudioConfig;
@@ -26,12 +28,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, services }) =>
             <div className="flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#c5a059]/15 border border-[#c5a059]/30 text-[#e5c378] text-xs font-semibold uppercase tracking-widest">
                 <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
-                <span>{config.studioName} • Estudio de Autor</span>
+                <span>{config.specialistName} • Estudio de Autor</span>
+              </div>
+
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#c5a059]/10 border border-[#c5a059]/25 text-[#e5c378] text-[11px] font-medium">
+                <Award className="w-3.5 h-3.5 text-[#c5a059]" />
+                <span>Premio PMU World</span>
               </div>
               
               <span className="hidden sm:inline-flex items-center gap-1 text-xs text-neutral-400">
                 <Star className="w-3.5 h-3.5 text-[#c5a059] fill-[#c5a059]" />
-                <span>4.9 / 5.0 (Clientas Verificadas)</span>
+                <span>Burriana (Castellón)</span>
               </span>
             </div>
 
@@ -110,61 +117,90 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, services }) =>
 
           </div>
 
-          {/* Right Column: Central Hero Portrait of the Girl with Face Perfectly Centered */}
+          {/* Right Column: Central Hero Portrait of Vanessa Forés in consultation */}
           <div className="lg:col-span-6 relative">
             
             {/* Outer Luxury Card Framing */}
-            <div className="relative rounded-3xl overflow-hidden border-2 border-[#c5a059]/40 bg-[#141414] p-3 sm:p-4 shadow-2xl shadow-black/80 group">
+            <div className="relative rounded-3xl overflow-hidden border-2 border-[#c5a059]/60 bg-[#141414] p-3 sm:p-4 shadow-2xl shadow-black/90 group">
               
-              {/* Inner Portrait Container: Perfectly Centered Face */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/4.8] sm:aspect-[4/4.5] bg-black flex items-center justify-center">
+              {/* Inner Portrait Container */}
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5.2] sm:aspect-[4/5] bg-black flex items-center justify-center">
                 
-                {/* Model Girl Image - Explicit Centered Face Positioning */}
+                {/* Vanessa Forés in Session Image */}
                 <img
                   src={config.heroImage}
-                  alt={`Modelo Micropigmentación - ${config.studioName}`}
-                  className="w-full h-full object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105"
+                  alt={`Vanessa Forés - Micropigmentación Facial`}
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (target.src !== heroFallback) {
+                      target.src = heroFallback;
+                    }
+                  }}
+                  className="w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
                 />
 
-                {/* Subtle soft vignette at edges only (leaves face bright and centered) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
-                <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+                {/* Subtle luxury vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/35 pointer-events-none" />
+                <div className="absolute inset-0 border border-[#c5a059]/20 rounded-2xl pointer-events-none" />
 
-                {/* Top Corner Badge: Portfolio Model */}
+                {/* Top Left: Nueva Consulta en Burriana Badge */}
                 <div className="absolute top-3 left-3 z-10">
-                  <div className="bg-black/80 backdrop-blur-md text-[#e5c378] border border-[#c5a059]/40 text-[10px] sm:text-xs font-semibold uppercase tracking-wider py-1 px-3 rounded-full shadow-lg flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#c5a059] animate-pulse"></span>
-                    <span>Resultado Hiperrealista</span>
+                  <div className="bg-black/90 backdrop-blur-md text-[#e5c378] border border-[#c5a059]/50 text-[10px] sm:text-xs font-semibold uppercase tracking-wider py-1.5 px-3 rounded-full shadow-xl flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+                    <span>Nueva Consulta en Burriana</span>
                   </div>
                 </div>
 
-                {/* Floating Highlight 1: Brows & Golden Ratio */}
-                <div className="absolute top-1/4 -left-2 sm:left-3 z-10 bg-black/85 backdrop-blur-md border border-[#c5a059]/40 rounded-xl py-1.5 px-3 shadow-xl max-w-[190px]">
-                  <p className="text-[10px] uppercase font-bold text-[#e5c378] tracking-wider">Cejas Shading & Powder</p>
-                  <p className="text-[9px] text-neutral-300 font-light">Diseño de visagismo áureo</p>
+                {/* Top Right: Official Logo Badge */}
+                <div className="absolute top-3 right-3 z-10">
+                  <div className="w-12 h-12 rounded-full bg-white border-2 border-[#c5a059] p-0.5 shadow-xl overflow-hidden">
+                    <img
+                      src={config.logoImage}
+                      alt="Logo V. Forés"
+                      className="w-full h-full object-contain rounded-full"
+                    />
+                  </div>
                 </div>
 
-                {/* Floating Highlight 2: Aquarelle Lips */}
-                <div className="absolute bottom-16 -right-2 sm:right-3 z-10 bg-black/85 backdrop-blur-md border border-[#c5a059]/40 rounded-xl py-1.5 px-3 shadow-xl max-w-[190px] text-right">
-                  <p className="text-[10px] uppercase font-bold text-[#e5c378] tracking-wider">Aquarelle Lip Blush</p>
-                  <p className="text-[9px] text-neutral-300 font-light">Efecto rubor y volumen 3D</p>
+                {/* Floating Highlight 1: Award Winner Badge */}
+                <div className="absolute top-1/4 -left-2 sm:left-3 z-10 bg-black/90 backdrop-blur-md border border-[#c5a059]/50 rounded-xl py-2 px-3.5 shadow-2xl max-w-[210px]">
+                  <div className="flex items-center gap-2">
+                    <Award className="w-5 h-5 text-[#e5c378] shrink-0" />
+                    <div>
+                      <p className="text-[11px] uppercase font-bold text-[#e5c378] tracking-wider leading-tight">PREMIO PMU WORLD</p>
+                      <p className="text-[9px] text-neutral-300 font-light">Master Artist Internacional</p>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Bottom Model Info Card */}
-                <div className="absolute bottom-3 left-3 right-3 z-10 bg-black/85 backdrop-blur-md p-3 rounded-xl border border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-[#c5a059] text-black flex items-center justify-center font-bold text-xs shrink-0">
-                      VF
+                {/* Floating Highlight 2: Address */}
+                <div className="absolute bottom-20 -right-2 sm:right-3 z-10 bg-black/90 backdrop-blur-md border border-[#c5a059]/50 rounded-xl py-2 px-3.5 shadow-2xl max-w-[210px] text-right">
+                  <p className="text-[10px] uppercase font-bold text-[#e5c378] tracking-wider">Calle Benicarló 8</p>
+                  <p className="text-[9px] text-neutral-300 font-light">Burriana (Castellón)</p>
+                </div>
+
+                {/* Bottom Specialist Info Card */}
+                <div className="absolute bottom-3 left-3 right-3 z-10 bg-black/90 backdrop-blur-md p-3.5 rounded-xl border border-white/15 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-white border border-[#c5a059] p-0.5 overflow-hidden shrink-0">
+                      <img
+                        src={config.logoImage}
+                        alt="Logo V. Forés"
+                        className="w-full h-full object-contain rounded-full"
+                      />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-white font-serif">{config.specialistName}</p>
-                      <p className="text-[9px] text-[#e5c378] uppercase tracking-wider">Master Artist en Visagismo</p>
+                      <p className="text-sm font-semibold text-white font-serif tracking-wide">Vanessa Forés</p>
+                      <p className="text-[10px] text-[#e5c378] uppercase tracking-wider font-medium">Micropigmentación Facial</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] text-[#25D366]">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span className="font-medium">100% Natural</span>
-                  </div>
+                  
+                  <a
+                    href="tel:605470721"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#c5a059]/20 hover:bg-[#c5a059]/30 border border-[#c5a059]/40 text-[#e5c378] text-xs font-semibold tracking-wider transition-colors"
+                  >
+                    <span>605 470 721</span>
+                  </a>
                 </div>
 
               </div>

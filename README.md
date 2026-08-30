@@ -1,6 +1,6 @@
-# Vane Fores | Micropigmentación Avanzada & Visagismo
+# Vanessa Fores | Micropigmentación Avanzada & Visagismo
 
-Sitio web y One-Page interactiva de alta gama para el estudio de micropigmentación de **Vane Fores**, desarrollado con **React**, **Vite** y **Tailwind CSS**.
+Sitio web y One-Page interactiva de alta gama para el estudio de micropigmentación de **Vanessa Fores**, desarrollado con **React**, **Vite** y **Tailwind CSS**.
 
 ---
 
